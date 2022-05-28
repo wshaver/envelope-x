@@ -177,7 +177,7 @@ export class AppComponent {
     this.shuffleDeck();
     for (const perk of this.perks) {
       if (this.cookieService.get('perk' + perk.sequence)) {
-        perk.included = true;
+        this.togglePerk(perk);
       }
     }
   }
@@ -206,6 +206,14 @@ export class AppComponent {
     if (perk.included) {
       for (const card of perk.addedCards) {
         this.drawPile = this.drawPile.filter(c => c.filename !== card.filename);
+        if (perk.removedFilenames) {
+          for (const filename of perk.removedFilenames) {
+            const card = this.baseDeck.find(c => c.filename === filename);
+            if (card) {
+              this.drawPile.push(card);
+            }
+          }
+        }
       }
     } else {
       this.drawPile.push(...perk.addedCards);
