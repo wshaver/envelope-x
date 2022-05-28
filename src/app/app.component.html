@@ -1,0 +1,39 @@
+<div class="actions">
+  <div>
+    <button mat-raised-button color="primary" (click)="endRound()">End Round</button>
+    <button mat-raised-button color="primary" (click)="addCurse()">Add Curse</button>
+    <button mat-raised-button color="primary" (click)="addBless()">Add Bless</button>
+  </div>
+  <div>
+    <button mat-raised-button color="primary" (click)="addNegOne()">Add -1</button>
+    <button mat-raised-button color="primary" (click)="removeNegOne()">Remove -1</button>
+  </div>
+</div>
+<div class="decks">
+  <div class="deck">
+    <h3>Discard {{discardPile.length}}</h3>
+    <div class="stacked-cards">
+      <div class="card" *ngFor="let card of discardPile; let i = index" [ngStyle]="{'z-index':100-i}">
+        <img [src]="'assets/' + card.filename">
+      </div>
+    </div>
+  </div>
+  <div class="deck">
+    <h3>Draw {{drawPile.length}}</h3>
+    <div class="card draw">
+      <img *ngIf="drawPile.length > 0" (click)="drawCard()" src="assets/gh-am-bs-back.png">
+    </div>
+  </div>
+</div>
+
+<form>
+  <mat-checkbox [disabled]="discardPile.length !== 0" *ngFor="let perk of perks" (change)="togglePerk(perk)"
+    [checked]="perk.included" color="primary">
+    {{perk.text}}</mat-checkbox>
+</form>
+
+<div class="preload">
+  <div class="card" *ngFor="let card of drawPile">
+    <img [src]="'assets/' + card.filename">
+  </div>
+</div>

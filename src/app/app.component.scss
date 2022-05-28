@@ -1,0 +1,58 @@
+mat-checkbox {
+    display: block;
+    margin: 5px;
+}
+
+.decks {
+    width: 100%;
+    display: flex;
+
+    .deck {
+        width: 50%;
+        border: 4px solid #555;
+        padding: 10px;
+        overflow: hidden;
+
+        &:first-child {
+            border-right: none;
+        }
+
+        .stacked-cards {
+            overflow: hidden;
+
+            .card:not(:first-child) {
+                margin-top: -20%;
+            }
+        }
+    }
+}
+
+.actions {
+    clear: both;
+    margin: 10px 0px;
+
+    button {
+        margin-right: 10px;
+        margin-top: 10px;
+    }
+}
+
+.card {
+    user-select: none;
+    position: relative;
+    padding: 10px;
+    width: calc(100% - 20px);
+    max-width: 400px;
+
+    img {
+        width: 100%;
+    }
+
+    &.draw {
+        cursor: pointer;
+    }
+}
+
+.preload {
+    display: none;
+}
