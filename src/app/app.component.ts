@@ -229,7 +229,7 @@ export class AppComponent {
     perk.included = !perk.included;
     this.shuffleDeck();
     if (perk.included) {
-      this.cookieService.set('perk' + perk.sequence, 'true');
+      this.cookieService.set('perk' + perk.sequence, 'true', 100);
     } else {
       this.cookieService.delete('perk' + perk.sequence);
     }
@@ -278,7 +278,6 @@ export class AppComponent {
   toggleCurrent(card: Card) {
     card.current = !card.current;
   }
-
 }
 
 export interface Card {
