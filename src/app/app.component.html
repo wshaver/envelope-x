@@ -26,13 +26,13 @@
     </div>
   </div>
 </div>
-
-<form>
-  <mat-checkbox [disabled]="discardPile.length !== 0" *ngFor="let perk of perks" (change)="togglePerk(perk)"
-    [checked]="perk.included" color="primary">
-    {{perk.text}}</mat-checkbox>
-</form>
-
+<div class="perks-list">
+  <form>
+    <mat-checkbox [disabled]="discardPile.length !== 0" *ngFor="let perk of perks" (change)="togglePerk(perk)"
+      [checked]="perk.included" color="primary">
+      {{perk.text}}</mat-checkbox>
+  </form>
+</div>
 <div class="preload">
   <div class="card" *ngFor="let card of drawPile">
     <img [src]="'assets/' + card.filename">
@@ -83,11 +83,13 @@
     }
   }
 </style>
-<br />
-Last Updated: May 30, 2022.<br />
-Click the draw pile to draw a card.<br />
-Click a card in the discard pile to toggle it as part of the current combat cycle, making it easier to track rolling
-modifiers.<br />
-'End Round' will remove all drawn Curse and Bless cards.<br />
-You can select Perks when your discard pile is empty. Perks are remembered via cookie, so returning should keep your
-perks.<br />
+<div class="help">
+  <br />
+  Last Updated: May 30, 2022.<br />
+  Click the draw pile to draw a card.<br />
+  Click a card in the discard pile to toggle it as part of the current combat cycle, making it easier to track rolling
+  modifiers.<br />
+  'End Round' will remove all drawn Curse and Bless cards.<br />
+  You can select Perks when your discard pile is empty. Perks are remembered via cookie, so returning should keep your
+  perks.<br />
+</div>
