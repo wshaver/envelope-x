@@ -13,7 +13,8 @@
   <div class="deck">
     <h3>Discard {{discardPile.length}}</h3>
     <div class="stacked-cards">
-      <div class="card" *ngFor="let card of discardPile; let i = index" [ngStyle]="{'z-index':100-i}">
+      <div class="card discard" *ngFor="let card of discardPile; let i = index" [ngStyle]="{'z-index':100-i}"
+        [ngClass]="{current:card.current}" (click)="toggleCurrent(card)">
         <img [src]="'assets/' + card.filename">
       </div>
     </div>

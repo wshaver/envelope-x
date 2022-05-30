@@ -200,6 +200,9 @@ export class AppComponent {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
     }
+    for (const card of this.drawPile) {
+      card.current = false;
+    }
   }
 
   togglePerk(perk: Perk) {
@@ -235,6 +238,7 @@ export class AppComponent {
   drawCard() {
     const card = this.drawPile.pop();
     if (card) {
+      card.current = true;
       this.discardPile.unshift(card);
     }
   }
@@ -271,11 +275,16 @@ export class AppComponent {
     this.shuffleDeck();
   }
 
+  toggleCurrent(card: Card) {
+    card.current = !card.current;
+  }
+
 }
 
 export interface Card {
   name?: string;
   filename?: string;
+  current?: boolean;
 }
 
 export interface Perk {

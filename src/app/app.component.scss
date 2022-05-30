@@ -21,7 +21,7 @@ mat-checkbox {
             overflow: hidden;
 
             .card:not(:first-child) {
-                margin-top: -20%;
+                margin-top: -15%;
             }
         }
     }
@@ -48,8 +48,13 @@ mat-checkbox {
         width: 100%;
     }
 
-    &.draw {
+    &.draw,
+    &.discard {
         cursor: pointer;
+    }
+
+    &.discard.current {
+        margin-left: 20%;
     }
 }
 
